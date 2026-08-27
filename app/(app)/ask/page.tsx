@@ -13,7 +13,7 @@ export default function AskPage() {
   return (
     <Suspense
       fallback={
-        <PageShell>
+        <PageShell className="space-y-6">
           <LoadingCard lines={6} />
         </PageShell>
       }

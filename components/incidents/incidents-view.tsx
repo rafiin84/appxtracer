@@ -20,7 +20,7 @@ export function IncidentsView() {
 
   if (isLoading) {
     return (
-      <PageShell>
+      <PageShell width="wide" className="space-y-8">
         <LoadingGrid count={4} />
       </PageShell>
     );
@@ -28,7 +28,7 @@ export function IncidentsView() {
 
   if (isError || !data) {
     return (
-      <PageShell>
+      <PageShell width="wide" className="space-y-8">
         <ErrorState
           description={error?.message ?? "Incidents could not be loaded for this window."}
           onRetry={() => refetch()}

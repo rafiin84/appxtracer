@@ -13,7 +13,7 @@ export default function ImpactPage() {
   return (
     <Suspense
       fallback={
-        <PageShell>
+        <PageShell width="wide" className="space-y-8">
           <LoadingCard lines={10} />
         </PageShell>
       }

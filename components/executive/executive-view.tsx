@@ -48,7 +48,7 @@ export function ExecutiveInsightsView() {
 
   if (isLoading) {
     return (
-      <PageShell>
+      <PageShell width="wide" className="space-y-8">
         <LoadingCard lines={10} />
       </PageShell>
     );
@@ -56,7 +56,7 @@ export function ExecutiveInsightsView() {
 
   if (isError || !data) {
     return (
-      <PageShell>
+      <PageShell width="wide" className="space-y-8">
         <ErrorState
           description={error?.message ?? "Executive insights could not be assembled."}
           onRetry={() => refetch()}

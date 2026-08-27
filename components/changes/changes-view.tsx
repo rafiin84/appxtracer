@@ -23,7 +23,7 @@ export function ChangesView() {
 
   if (isLoading) {
     return (
-      <PageShell>
+      <PageShell width="wide" className="space-y-8">
         <LoadingGrid count={4} />
       </PageShell>
     );
@@ -31,7 +31,7 @@ export function ChangesView() {
 
   if (isError || !data) {
     return (
-      <PageShell>
+      <PageShell width="wide" className="space-y-8">
         <ErrorState
           description={error?.message ?? "The change record could not be loaded."}
           onRetry={() => refetch()}

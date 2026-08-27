@@ -42,7 +42,7 @@ export function EvidenceView() {
 
   if (isLoading) {
     return (
-      <PageShell>
+      <PageShell width="wide" className="space-y-8">
         <LoadingCard lines={10} />
       </PageShell>
     );
@@ -50,7 +50,7 @@ export function EvidenceView() {
 
   if (isError || !data) {
     return (
-      <PageShell>
+      <PageShell width="wide" className="space-y-8">
         <ErrorState
           description={error?.message ?? "The evidence corpus could not be loaded."}
           onRetry={() => refetch()}

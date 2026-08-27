@@ -32,7 +32,7 @@ export function JourneysView() {
 
   if (isLoading) {
     return (
-      <PageShell>
+      <PageShell width="wide" className="space-y-8">
         <LoadingGrid count={6} />
       </PageShell>
     );
@@ -40,7 +40,7 @@ export function JourneysView() {
 
   if (isError || !data) {
     return (
-      <PageShell>
+      <PageShell width="wide" className="space-y-8">
         <ErrorState
           description={error?.message ?? "The journey portfolio could not be loaded."}
           onRetry={() => refetch()}

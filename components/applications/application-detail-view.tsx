@@ -43,7 +43,7 @@ export function ApplicationDetailView({ applicationId }: { applicationId: string
 
   if (isLoading) {
     return (
-      <PageShell>
+      <PageShell width="wide" className="space-y-8">
         <LoadingCard lines={8} />
       </PageShell>
     );
@@ -51,7 +51,7 @@ export function ApplicationDetailView({ applicationId }: { applicationId: string
 
   if (isError || !data) {
     return (
-      <PageShell>
+      <PageShell width="wide" className="space-y-8">
         <ErrorState
           title="Application not found"
           description={error?.message ?? `No application matches "${applicationId}".`}

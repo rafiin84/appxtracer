@@ -46,9 +46,9 @@ export function PageHeader({
             {title}
           </h1>
           {description && (
-            <p className="mt-2 max-w-2xl text-[14px] leading-relaxed text-ink-secondary text-pretty">
+            <div className="mt-2 max-w-2xl text-[14px] leading-relaxed text-ink-secondary text-pretty">
               {description}
-            </p>
+            </div>
           )}
           {meta && <div className="mt-3 flex flex-wrap items-center gap-2">{meta}</div>}
         </div>

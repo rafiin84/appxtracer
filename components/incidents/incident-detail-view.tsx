@@ -45,7 +45,7 @@ export function IncidentDetailView({ incidentId }: { incidentId: string }) {
 
   if (isLoading) {
     return (
-      <PageShell>
+      <PageShell width="wide" className="space-y-8">
         <LoadingCard lines={10} />
       </PageShell>
     );
@@ -53,7 +53,7 @@ export function IncidentDetailView({ incidentId }: { incidentId: string }) {
 
   if (isError || !data) {
     return (
-      <PageShell>
+      <PageShell width="wide" className="space-y-8">
         <ErrorState
           title="Incident not found"
           description={error?.message ?? `No incident matches "${incidentId}".`}

@@ -23,7 +23,7 @@ export function ChangeDetailView({ changeId }: { changeId: string }) {
 
   if (isLoading) {
     return (
-      <PageShell>
+      <PageShell className="space-y-8">
         <LoadingCard lines={8} />
       </PageShell>
     );
@@ -31,7 +31,7 @@ export function ChangeDetailView({ changeId }: { changeId: string }) {
 
   if (isError || !data) {
     return (
-      <PageShell>
+      <PageShell className="space-y-8">
         <ErrorState
           title="Change not found"
           description={error?.message ?? `No change matches "${changeId}".`}

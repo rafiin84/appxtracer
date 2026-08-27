@@ -28,18 +28,30 @@ export function CommandCenterView() {
 
   if (isLoading) {
     return (
-      <PageShell>
-        <Skeleton className="h-8 w-64" />
-        <Skeleton className="mt-6 h-64 w-full rounded-panel" />
-        <LoadingGrid className="mt-6" count={3} />
-        <LoadingCard className="mt-6" lines={6} />
+      <PageShell width="wide" className="space-y-8">
+        <PageHeader
+          question="How is my app performing?"
+          title={
+            <span className="flex flex-wrap items-center gap-x-3 gap-y-2">
+              <span>Command Center</span>
+              <TenantChip name={COMPANY.name} />
+            </span>
+          }
+          description={<Skeleton className="h-4 w-full max-w-md" />}
+        />
+        <Skeleton className="h-64 w-full rounded-panel" />
+        <LoadingGrid count={3} />
+        <LoadingCard lines={6} />
+        <span className="sr-only" role="status">
+          Loading the command centre.
+        </span>
       </PageShell>
     );
   }
 
   if (isError || !data) {
     return (
-      <PageShell>
+      <PageShell width="wide" className="space-y-8">
         <ErrorState
           description={
             error?.message ??

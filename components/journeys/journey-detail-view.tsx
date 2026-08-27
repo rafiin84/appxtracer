@@ -51,7 +51,7 @@ export function JourneyDetailView({ journeyId }: { journeyId: string }) {
 
   if (isLoading) {
     return (
-      <PageShell>
+      <PageShell width="wide" className="space-y-8">
         <LoadingCard lines={8} />
       </PageShell>
     );
@@ -59,7 +59,7 @@ export function JourneyDetailView({ journeyId }: { journeyId: string }) {
 
   if (isError || !data) {
     return (
-      <PageShell>
+      <PageShell width="wide" className="space-y-8">
         <ErrorState
           title="Journey not found"
           description={error?.message ?? `No journey matches "${journeyId}".`}

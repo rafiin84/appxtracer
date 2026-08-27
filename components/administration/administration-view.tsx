@@ -33,7 +33,7 @@ export function AdministrationView() {
 
   if (sourcesLoading) {
     return (
-      <PageShell>
+      <PageShell width="wide" className="space-y-8">
         <LoadingCard lines={10} />
       </PageShell>
     );
@@ -41,7 +41,7 @@ export function AdministrationView() {
 
   if (isError || !sourcesData) {
     return (
-      <PageShell>
+      <PageShell width="wide" className="space-y-8">
         <ErrorState
           description={error?.message ?? "Administration data could not be loaded."}
           onRetry={() => refetch()}

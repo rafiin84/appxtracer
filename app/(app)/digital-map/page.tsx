@@ -13,7 +13,7 @@ export default function DigitalMapPage() {
   return (
     <Suspense
       fallback={
-        <PageShell>
+        <PageShell width="full" className="space-y-5">
           <LoadingCard lines={12} />
         </PageShell>
       }
