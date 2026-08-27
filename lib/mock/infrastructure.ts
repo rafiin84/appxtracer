@@ -231,7 +231,7 @@ export const INFRASTRUCTURE: InfrastructureNode[] = [
   // ---- Data stores --------------------------------------------------------
   {
     id: "rds-payments-primary",
-    name: "novacart-payments-primary",
+    name: "nike-payments-primary",
     kind: "cloud-resource",
     provider: "aws",
     region: "us-east",
@@ -247,7 +247,7 @@ export const INFRASTRUCTURE: InfrastructureNode[] = [
   },
   {
     id: "rds-payments-replica-a",
-    name: "novacart-payments-replica-a",
+    name: "nike-payments-replica-a",
     kind: "cloud-resource",
     provider: "aws",
     region: "us-west",
@@ -262,7 +262,7 @@ export const INFRASTRUCTURE: InfrastructureNode[] = [
   },
   {
     id: "rds-orders-primary",
-    name: "novacart-orders-primary",
+    name: "nike-orders-primary",
     kind: "cloud-resource",
     provider: "aws",
     region: "us-east",
@@ -277,7 +277,7 @@ export const INFRASTRUCTURE: InfrastructureNode[] = [
   },
   {
     id: "aurora-catalog",
-    name: "novacart-catalog-global",
+    name: "nike-catalog-global",
     kind: "cloud-resource",
     provider: "aws",
     region: "us-east",

@@ -27,10 +27,10 @@ const S = {
   appmanager: source("src-appmanager", "ManageEngine AppManager", "apm", "monitor/payment-service/transactions", 55),
   thousandeyes: source("src-thousandeyes", "ThousandEyes", "network", "tests/eu-central-storefront/path-visualisation", 74),
   panorama: source("src-panorama", "Palo Alto Panorama", "security", "policies/fw-edge-euc1/rule-482", 210),
-  github: source("src-github", "GitHub Actions", "change", "novacart/payments/actions/runs/8841", 30),
+  github: source("src-github", "GitHub Actions", "change", "nike/payments/actions/runs/8841", 30),
   servicenow: source("src-servicenow", "ServiceNow", "change", "change_request.do?sys_id=CHG-8841", 300),
   ledger: source("src-ledger", "Stripe Ledger", "business", "ledger/authorisations?window=14:31-15:12", 240),
-  orders: source("src-orders", "NovaCart Order Service", "business", "orders/failed?window=14:33-15:12", 35),
+  orders: source("src-orders", "Nike Order Service", "business", "orders/failed?window=14:33-15:12", 35),
   graph: source("src-graph", "APPX Graph", "graph", "graph/assertion", 2, "corroborating"),
 } as const;
 
@@ -127,7 +127,7 @@ export const EVIDENCE: Evidence[] = [
     handle: "E3",
     title: "Payments database connection pool at 97% utilisation",
     statement:
-      "Aurora connection pool utilisation on novacart-payments-primary crossed 85% at 14:29:40 UTC and reached 97%, where it remains.",
+      "Aurora connection pool utilisation on nike-payments-primary crossed 85% at 14:29:40 UTC and reached 97%, where it remains.",
     kind: "metric",
     provenance: "observed",
     observedAt: T.poolSaturation,
@@ -546,7 +546,7 @@ export const EVIDENCE: Evidence[] = [
     handle: "E31",
     title: "3,180 memberships failed to renew",
     statement:
-      "3,180 NovaCart Plus memberships failed at least one renewal attempt. 2,410 have since succeeded on retry.",
+      "3,180 Nike memberships failed at least one renewal attempt. 2,410 have since succeeded on retry.",
     kind: "transaction",
     provenance: "observed",
     observedAt: T.now,
@@ -587,7 +587,7 @@ export const EVIDENCE: Evidence[] = [
     handle: "E34",
     title: "Four journeys transitively depend on the payments database",
     statement:
-      "Transitive closure of appx:dependsOn from the payments primary reaches Complete Checkout, Make a Payment, Renew NovaCart Plus and Redeem a Gift Card.",
+      "Transitive closure of appx:dependsOn from the payments primary reaches Complete Checkout, Make a Payment, Renew Nike Membership and Redeem a Gift Card.",
     kind: "graph-assertion",
     provenance: "derived",
     observedAt: T.now,
@@ -659,7 +659,7 @@ export const EVIDENCE: Evidence[] = [
     handle: "E39",
     title: "Orders database connection headroom narrowing",
     statement:
-      "novacart-orders-primary pool utilisation has trended from 48% to 68% over 30 days at constant transaction volume.",
+      "nike-orders-primary pool utilisation has trended from 48% to 68% over 30 days at constant transaction volume.",
     kind: "metric",
     provenance: "observed",
     observedAt: T.now,

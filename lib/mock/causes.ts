@@ -132,7 +132,7 @@ export const ROOT_CAUSES: RootCause[] = [
     statement:
       "Mobile 8.42.1 introduced a view-recycling regression that crashes on Android 14 devices entering the basket from a deep link.",
     entityId: "app-mobile",
-    entityLabel: "NovaCart Mobile App",
+    entityLabel: "Nike Mobile App",
     layer: "application",
     confidence: confidence(0.83, "Crash signature is exclusive to the new build and stopped when the rollout was halted."),
     provenance: "derived",
@@ -357,7 +357,7 @@ export const EMERGING_RISKS: EmergingRisk[] = [
     id: "risk-orders-pool",
     title: "Orders database will reach its connection threshold in about nine days",
     statement:
-      "Connection pool utilisation on novacart-orders-primary has trended from 48% to 68% over 30 days at flat transaction volume. At the current slope it crosses the 85% alert threshold within nine days — and the autumn peak lands inside that window.",
+      "Connection pool utilisation on nike-orders-primary has trended from 48% to 68% over 30 days at flat transaction volume. At the current slope it crosses the 85% alert threshold within nine days — and the autumn peak lands inside that window.",
     entityId: "db-orders-primary",
     entityLabel: "Orders Primary Database",
     likelihood: 0.64,

@@ -430,7 +430,7 @@ function blastRadiusAnswer(question: string): AskAnswer {
   return {
     ...base(question),
     executiveSummary:
-      "If the payments primary database fails completely, four business journeys stop: Complete Checkout, Make a Payment, Renew NovaCart Plus and Redeem a Gift Card. That is roughly 1.19M customers in a comparable window and about $10.4M of transaction value per hour at current volume. There is no failover: over 90 days of traces the graph has never observed an alternative authorisation path.",
+      "If the payments primary database fails completely, four business journeys stop: Complete Checkout, Make a Payment, Renew Nike Membership and Redeem a Gift Card. That is roughly 1.19M customers in a comparable window and about $10.4M of transaction value per hour at current volume. There is no failover: over 90 days of traces the graph has never observed an alternative authorisation path.",
     citations: citations([
       ["ev-034", "Four journeys transitively depend on the payments database."],
       ["ev-054", "No alternative authorisation path has ever been observed."],

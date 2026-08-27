@@ -32,7 +32,7 @@ export type SourceSystem =
   | "GitHub Actions"
   | "ServiceNow"
   | "Stripe Ledger"
-  | "NovaCart Order Service"
+  | "Nike Order Service"
   | "APPX Graph";
 
 export interface EvidenceSource {

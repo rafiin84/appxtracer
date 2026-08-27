@@ -3,25 +3,28 @@ import type { IngestSource } from "@/types/api";
 import { minutesAgo } from "@/lib/utils/clock";
 
 /**
- * NovaCart — the fictional global commerce platform this demo instance models.
- * ~41.6M monthly active customers across seven regions, 12 applications and
- * 24 services, with the application itself being the entire business.
+ * The tenant this demo instance models: Nike's online sales estate.
+ *
+ * The company is real; every number, journey, incident, change and customer
+ * below is synthetic demo data and nothing here reflects Nike's actual
+ * systems or trading. The UI carries a "Demo data" marker beside the tenant
+ * name for exactly that reason.
  */
 export const COMPANY = {
-  id: "org-novacart",
-  name: "NovaCart",
-  tagline: "Global commerce platform",
+  id: "org-nike",
+  name: "Nike",
+  tagline: "Global online sales platform",
   monthlyActiveCustomers: 41_600_000,
   annualGmv: 18_400_000_000,
   currency: "USD" as const,
-  headquarters: "Amsterdam",
+  headquarters: "Beaverton, Oregon",
 };
 
 export const ENVIRONMENTS: EnvironmentRef[] = [
-  { id: "env-prod", name: "Production", kind: "production", tenant: "novacart-global" },
-  { id: "env-prod-eu", name: "Production · EU", kind: "production", tenant: "novacart-eu" },
-  { id: "env-staging", name: "Staging", kind: "staging", tenant: "novacart-global" },
-  { id: "env-dr", name: "Disaster recovery", kind: "disaster-recovery", tenant: "novacart-global" },
+  { id: "env-prod", name: "Production", kind: "production", tenant: "nike-global" },
+  { id: "env-prod-eu", name: "Production · EU", kind: "production", tenant: "nike-eu" },
+  { id: "env-staging", name: "Staging", kind: "staging", tenant: "nike-global" },
+  { id: "env-dr", name: "Disaster recovery", kind: "disaster-recovery", tenant: "nike-global" },
 ];
 
 export const DEFAULT_ENVIRONMENT_ID = "env-prod";
@@ -150,6 +153,6 @@ export const INGEST_SOURCES: IngestSource[] = [
   { id: "src-panorama", system: "Palo Alto Panorama", category: "Security & firewall", status: "connected", entitiesContributed: 268, factsContributed: 121_000, lastSyncAt: minutesAgo(5), latencySeconds: 210 },
   { id: "src-github", system: "GitHub Actions", category: "Change & deployment", status: "connected", entitiesContributed: 640, factsContributed: 24_800, lastSyncAt: minutesAgo(2), latencySeconds: 30 },
   { id: "src-servicenow", system: "ServiceNow", category: "Change management", status: "connected", entitiesContributed: 510, factsContributed: 19_200, lastSyncAt: minutesAgo(6), latencySeconds: 300 },
-  { id: "src-ledger", system: "NovaCart Revenue Ledger", category: "Business & revenue", status: "connected", entitiesContributed: 96, factsContributed: 5_920_000, lastSyncAt: minutesAgo(4), latencySeconds: 240 },
-  { id: "src-orders", system: "NovaCart Order Service", category: "Business transactions", status: "connected", entitiesContributed: 140, factsContributed: 8_410_000, lastSyncAt: minutesAgo(1), latencySeconds: 35 },
+  { id: "src-ledger", system: "Nike Revenue Ledger", category: "Business & revenue", status: "connected", entitiesContributed: 96, factsContributed: 5_920_000, lastSyncAt: minutesAgo(4), latencySeconds: 240 },
+  { id: "src-orders", system: "Nike Order Service", category: "Business transactions", status: "connected", entitiesContributed: 140, factsContributed: 8_410_000, lastSyncAt: minutesAgo(1), latencySeconds: 35 },
 ];

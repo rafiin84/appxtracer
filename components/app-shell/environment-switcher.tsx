@@ -18,7 +18,7 @@ import { TenantTile } from "./tenant-logo";
 /**
  * Who am I looking at, and in which environment?
  *
- * APPX Tracer is the product; NovaCart is the tenant whose app it is
+ * APPX Tracer is the product; Nike is the tenant whose app it is
  * reporting on. Naming the tenant in the chrome removes any ambiguity about
  * whose customers, journeys and revenue the numbers on screen describe.
  */
@@ -37,8 +37,15 @@ export function EnvironmentSwitcher({ className }: { className?: string }) {
       >
         <TenantTile />
         <span className="min-w-0">
-          <span className="block truncate text-[13px] font-semibold leading-tight text-ink">
-            {COMPANY.name}
+          <span className="flex items-center gap-1.5">
+            <span className="truncate text-[13px] font-semibold leading-tight text-ink">
+              {COMPANY.name}
+            </span>
+            {/* The tenant is a real company; the data is not. Say so where the
+                tenant is named, not in a footnote nobody opens. */}
+            <span className="shrink-0 rounded bg-surface-sunken px-1 py-px text-[9.5px] font-semibold uppercase tracking-[0.08em] text-ink-muted">
+              Demo
+            </span>
           </span>
           <span className="block truncate text-[11px] leading-tight text-ink-muted">
             {current.name}
@@ -57,6 +64,10 @@ export function EnvironmentSwitcher({ className }: { className?: string }) {
             <span className="block text-[11.5px] leading-snug text-ink-muted">
               {COMPANY.tagline} · {formatCompactNumber(COMPANY.monthlyActiveCustomers)} monthly
               active customers
+            </span>
+            <span className="mt-1.5 block text-[11px] leading-snug text-ink-muted">
+              Demonstration data. Every figure, journey, incident and customer in this
+              instance is synthetic and reflects no real systems or trading.
             </span>
           </span>
         </div>

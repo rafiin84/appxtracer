@@ -149,7 +149,7 @@ export const CHANGES: Change[] = [
   {
     id: "chg-8832",
     reference: "CHG-8832",
-    title: "NovaCart Mobile 8.42.1 (Android)",
+    title: "Nike Mobile 8.42.1 (Android)",
     kind: "deployment",
     at: "2026-08-25T16:00:00.000Z",
     actorTeam: "Mobile Engineering",

@@ -101,7 +101,7 @@ export async function ask(
       }
       return answer;
     },
-    { sources: ["APPX Graph", "Datadog", "OpenTelemetry", "NovaCart Order Service", "GitHub Actions"] },
+    { sources: ["APPX Graph", "Datadog", "OpenTelemetry", "Nike Order Service", "GitHub Actions"] },
   );
 }
 

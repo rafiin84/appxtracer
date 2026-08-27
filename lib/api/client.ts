@@ -61,7 +61,7 @@ export async function respond<T>(
       environment,
       range: resolveRange(context.rangeKey),
       availability: meta?.availability ?? DEFAULT_AVAILABILITY,
-      sources: meta?.sources ?? ["Datadog", "OpenTelemetry", "NovaCart Order Service", "APPX Graph"],
+      sources: meta?.sources ?? ["Datadog", "OpenTelemetry", "Nike Order Service", "APPX Graph"],
     },
   };
 }

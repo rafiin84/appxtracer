@@ -16,7 +16,7 @@ export async function getExecutiveInsights(
   const payload = buildExecutiveInsights();
   return respond("/api/executive-insights", options, () => payload, {
     availability: payload.availability,
-    sources: ["APPX Graph", "NovaCart Revenue Ledger", "ServiceNow", "Datadog"],
+    sources: ["APPX Graph", "Nike Revenue Ledger", "ServiceNow", "Datadog"],
   });
 }
 

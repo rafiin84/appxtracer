@@ -51,7 +51,7 @@ export const INCIDENTS: Incident[] = [
         at: T.poolSaturation,
         kind: "impact",
         title: "Payments database connection pool crosses 85%",
-        detail: "Pool utilisation on novacart-payments-primary rises past the alert threshold and continues to 97%.",
+        detail: "Pool utilisation on nike-payments-primary rises past the alert threshold and continues to 97%.",
         provenance: "observed",
         evidenceIds: ["ev-003"],
       },
@@ -223,7 +223,7 @@ export const INCIDENTS: Incident[] = [
   {
     id: "inc-4414",
     reference: "INC-4414",
-    title: "NovaCart Plus renewals failing on credential refresh",
+    title: "Nike membership renewals failing on credential refresh",
     businessSummary:
       "Membership renewals are failing for about one in nine attempts. 3,180 members affected; 2,410 have since renewed on retry.",
     severity: "sev3",

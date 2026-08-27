@@ -1,15 +1,17 @@
 import { cn } from "@/lib/utils/cn";
 
 /**
- * The tenant's mark — NovaCart, the commerce platform this instance monitors.
+ * The tenant's mark.
  *
- * Deliberately distinct from the APPX Tracer mark: a different colour and a
- * different silhouette, so the product and the customer it is reporting on are
- * never mistaken for each other. A shopping bag carrying an N monogram makes
- * the archetype legible at a glance, which is the whole point of naming the
- * tenant on screen.
+ * A neutral placeholder — a shopping bag carrying an N monogram — deliberately
+ * *not* the tenant's real logo. Naming a real company as the demo subject is
+ * the tenant's call; reproducing their trademarked mark is a different and
+ * worse thing, so this stands in for it.
+ *
+ * It is also deliberately unlike the APPX Tracer mark in colour and silhouette,
+ * so the product and the customer it reports on are never confused.
  */
-export function NovaCartMark({ className }: { className?: string }) {
+export function NikeMark({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" className={cn("size-5", className)} aria-hidden focusable="false">
       <path
@@ -43,7 +45,7 @@ export function NovaCartMark({ className }: { className?: string }) {
   );
 }
 
-/** The tenant's tile, used wherever NovaCart is identified as the subject. */
+/** The tenant's tile, used wherever Nike is identified as the subject. */
 export function TenantTile({ className }: { className?: string }) {
   return (
     <span
@@ -52,7 +54,7 @@ export function TenantTile({ className }: { className?: string }) {
         className,
       )}
     >
-      <NovaCartMark className="size-[17px]" />
+      <NikeMark className="size-[17px]" />
     </span>
   );
 }
@@ -67,7 +69,7 @@ export function TenantChip({ name, className }: { name: string; className?: stri
       )}
     >
       <span className="grid size-6 place-items-center rounded-full bg-[var(--tenant)] text-white">
-        <NovaCartMark className="size-[15px]" />
+        <NikeMark className="size-[15px]" />
       </span>
       <span className="text-[13px] font-semibold text-[var(--tenant)]">{name}</span>
     </span>

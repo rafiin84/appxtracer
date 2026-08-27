@@ -27,10 +27,16 @@ Node 20.19+ or 22.13+ is recommended. The app is Vercel-ready and PWA-manifested
 
 ## The demo dataset
 
-The instance models **NovaCart**, a fictional global commerce platform: 41.6M monthly
-active customers, seven regions, 12 applications, 28 services, 39 infrastructure entities,
-12 business journeys, 10 incidents, 20 changes, 56 evidence records and ~440 graph
-relationships.
+The instance models **Nike's online sales estate**: 41.6M monthly active customers, seven
+regions, 12 applications, 28 services, 39 infrastructure entities, 12 business journeys,
+10 incidents, 20 changes, 59 evidence records and ~440 graph relationships.
+
+> The company is real; the data is not. Every figure, journey, incident, change and
+> customer in this instance is synthetic and reflects no real systems or trading. The UI
+> carries a "Demo" marker beside the tenant name, and the tenant's mark is a neutral
+> placeholder rather than a reproduction of any trademarked logo. Naming a real company as
+> the demo subject is the operator's decision; if you would rather it were fictional, the
+> tenant lives entirely in `lib/mock/` and renaming it is a find-and-replace.
 
 Three scenarios run through it, and every screen reads the same constants
 (`lib/mock/narrative.ts`), which is what keeps the story consistent:
@@ -58,7 +64,7 @@ components/            app-shell · command-center · journeys · applications �
                        customers · incidents · changes · impact · graph · ask ·
                        evidence · executive · administration · shared · ui
 lib/api/               the surface the UI is written against — the swap seam
-lib/mock/              the NovaCart dataset and its deterministic telemetry
+lib/mock/              the Nike dataset and its deterministic telemetry
 lib/graph/             layout + traversal engine (the SPARQL stand-in)
 lib/ontology/          RDFS classes, OWL predicate characteristics, SHACL shapes,
                        SPARQL templates

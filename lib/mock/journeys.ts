@@ -313,7 +313,7 @@ const BLUEPRINTS: JourneyBlueprint[] = [
   },
   {
     id: "jny-subscription-renew",
-    name: "Renew NovaCart Plus",
+    name: "Renew Nike Membership",
     businessDescription: "A recurring membership renews and the customer keeps their benefits.",
     criticality: "business-critical",
     health: "degraded",

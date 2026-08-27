@@ -184,14 +184,14 @@ export function buildExecutiveInsights(): ExecutiveInsightsPayload {
       { applicationId: "app-payments", name: "Payments Platform", incidents: 4, valueAtRisk: usd(7_240_000) },
       { applicationId: "app-search", name: "Search & Discovery", incidents: 3, valueAtRisk: usd(2_480_000) },
       { applicationId: "app-orders", name: "Order Management", incidents: 2, valueAtRisk: usd(1_506_000) },
-      { applicationId: "app-mobile", name: "NovaCart Mobile App", incidents: 3, valueAtRisk: usd(918_000) },
+      { applicationId: "app-mobile", name: "Nike Mobile App", incidents: 3, valueAtRisk: usd(918_000) },
       { applicationId: "app-identity", name: "Identity & Access", incidents: 2, valueAtRisk: usd(332_000) },
     ],
     topProblemJourneys: [
       { journeyId: "jny-checkout", name: "Complete Checkout", breaches: 5, valueAtRisk: usd(6_940_000) },
       { journeyId: "jny-payment", name: "Make a Payment", breaches: 4, valueAtRisk: usd(6_180_000) },
       { journeyId: "jny-search", name: "Search & Discover", breaches: 3, valueAtRisk: usd(1_820_000) },
-      { journeyId: "jny-subscription-renew", name: "Renew NovaCart Plus", breaches: 2, valueAtRisk: usd(682_000) },
+      { journeyId: "jny-subscription-renew", name: "Renew Nike Membership", breaches: 2, valueAtRisk: usd(682_000) },
       { journeyId: "jny-order-place", name: "Place Order", breaches: 2, valueAtRisk: usd(1_506_000) },
     ],
     recurringIncidents: [
