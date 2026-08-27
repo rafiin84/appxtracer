@@ -14,8 +14,12 @@ interface GraphState {
   health: HealthState[];
   impactedOnly: boolean;
   search: string;
-  /** Falls back to the accessible list rendering of the same data. */
-  viewMode: "graph" | "list";
+  /** Brain is the radial overview; list is the accessible rendering of both. */
+  viewMode: "graph" | "brain" | "list";
+  /** Category highlighted in the brain diagram. */
+  highlightedCategory?: GraphNodeKind;
+  /** Overlay the real relationships on the brain diagram. */
+  showRelationships: boolean;
 
   setFocus: (id?: string, depth?: number) => void;
   setDepth: (depth: number) => void;
@@ -27,7 +31,9 @@ interface GraphState {
   setHealth: (health: HealthState[]) => void;
   setImpactedOnly: (value: boolean) => void;
   setSearch: (value: string) => void;
-  setViewMode: (mode: "graph" | "list") => void;
+  setViewMode: (mode: "graph" | "brain" | "list") => void;
+  highlightCategory: (kind?: GraphNodeKind) => void;
+  setShowRelationships: (value: boolean) => void;
   reset: () => void;
 }
 
@@ -43,6 +49,8 @@ const INITIAL = {
   impactedOnly: false,
   search: "",
   viewMode: "graph" as const,
+  highlightedCategory: undefined,
+  showRelationships: false,
 };
 
 export const useGraphStore = create<GraphState>()((set) => ({
@@ -58,5 +66,7 @@ export const useGraphStore = create<GraphState>()((set) => ({
   setImpactedOnly: (impactedOnly) => set({ impactedOnly }),
   setSearch: (search) => set({ search }),
   setViewMode: (viewMode) => set({ viewMode }),
+  highlightCategory: (highlightedCategory) => set({ highlightedCategory }),
+  setShowRelationships: (showRelationships) => set({ showRelationships }),
   reset: () => set(INITIAL),
 }));

@@ -129,6 +129,14 @@ business-critical journey at depth 2, caps the rendered node count, and offers a
 carrying the same data. An unbounded projection of a shared database's neighbourhood is
 the entire estate — beautiful for a screenshot, useless to read.
 
+**Three views of one graph, answering different questions.** *Map* is layered by ontology
+layer, so it answers how impact travels — business at the top, infrastructure at the
+bottom. *Brain* is radial, with the tenant at the centre and one ring per ontology class,
+so it answers what the model knows about and how much of each; category density is
+interleaved around the wheel rather than ranked, or every large cluster would pack into
+one arc. *List* is the same data as text. All three are deterministic: the same snapshot
+always draws the same picture, so the shape becomes something a user can remember.
+
 **Motion carries meaning.** Page transitions, causal-path reveals, number counting and
 graph pulses all communicate causality or state. Everything is skipped under
 `prefers-reduced-motion`.

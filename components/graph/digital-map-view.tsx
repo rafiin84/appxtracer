@@ -13,12 +13,15 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Segmented } from "@/components/ui/segmented";
 import { Switch } from "@/components/ui/switch";
+import { BrainDiagram } from "./brain-diagram";
+import { BrainLegend } from "./brain-legend";
 import { DependencyGraph } from "./dependency-graph";
 import { GraphInspector } from "./graph-inspector";
 import { GraphListView } from "./graph-list-view";
 import { ErrorState, LoadingCard } from "@/components/shared/states";
 import { HealthDot } from "@/components/shared/health-badge";
 import { CURATED_PATHS } from "@/lib/mock/paths";
+import { categorySummary } from "@/lib/graph/brain-layout";
 import { LAYER_LABEL, LAYER_ORDER, classPlural } from "@/lib/ontology/classes";
 import { formatNumber } from "@/lib/formatters";
 import { cn } from "@/lib/utils/cn";
@@ -50,6 +53,9 @@ const HEALTH_OPTIONS: HealthState[] = ["critical", "impaired", "degraded", "heal
 /** The map opens here: the journey carrying the most business impact. */
 const DEFAULT_FOCUS_ID = "jny-checkout";
 
+/** Stable object identity — the graph query memoises on it. */
+const BRAIN_OVERRIDES = { focusId: undefined, depth: undefined } as const;
+
 /**
  * The digital map.
  *
@@ -61,7 +67,12 @@ const DEFAULT_FOCUS_ID = "jny-checkout";
 export function DigitalMapView() {
   const params = useSearchParams();
   const store = useGraphStore();
-  const { data, isLoading, isError, error, refetch } = useGraph();
+  const brainMode = store.viewMode === "brain";
+  // The brain is a whole-estate overview: focusing would defeat its purpose,
+  // so it deliberately reads the unfocused projection. Filters still apply.
+  const { data, isLoading, isError, error, refetch } = useGraph(
+    brainMode ? BRAIN_OVERRIDES : undefined,
+  );
 
   const initialised = React.useRef(false);
 
@@ -92,6 +103,10 @@ export function DigitalMapView() {
     ? snapshot?.edges.find((e) => e.id === store.selectedEdgeId)
     : undefined;
   const highlightedPath = CURATED_PATHS.find((p) => p.id === store.highlightedPathId);
+  const categories = React.useMemo(
+    () => (snapshot ? categorySummary(snapshot) : []),
+    [snapshot],
+  );
 
   const activeFilters =
     store.kinds.length + store.layers.length + store.health.length + (store.impactedOnly ? 1 : 0);
@@ -103,13 +118,14 @@ export function DigitalMapView() {
         title="Digital Map"
         description="An evolving semantic model of the estate: customers, journeys, applications, services, data, infrastructure, network, security, changes and incidents — and every relationship between them."
         actions={
-          <Segmented<"graph" | "list">
+          <Segmented<"graph" | "brain" | "list">
             label="View mode"
             value={store.viewMode}
             onChange={store.setViewMode}
             options={[
-              { value: "graph", label: "Map" },
-              { value: "list", label: "List" },
+              { value: "graph", label: "Map", hint: "Layered by ontology layer — how impact travels" },
+              { value: "brain", label: "Brain", hint: "Radial overview of everything the model knows" },
+              { value: "list", label: "List", hint: "The same data as text" },
             ]}
           />
         }
@@ -139,19 +155,30 @@ export function DigitalMapView() {
               Impacted only
             </label>
 
-            <Segmented
-              label="Traversal depth"
-              size="sm"
-              value={String(store.depth)}
-              onChange={(value) => store.setDepth(Number(value))}
-              options={[
-                { value: "1", label: "1 hop" },
-                { value: "2", label: "2 hops" },
-                { value: "3", label: "3 hops" },
-              ]}
-            />
+            {brainMode ? (
+              <label className="flex items-center gap-2 text-[12.5px] text-ink">
+                <Switch
+                  checked={store.showRelationships}
+                  onCheckedChange={store.setShowRelationships}
+                  aria-label="Overlay relationships on the brain diagram"
+                />
+                Show relationships
+              </label>
+            ) : (
+              <Segmented
+                label="Traversal depth"
+                size="sm"
+                value={String(store.depth)}
+                onChange={(value) => store.setDepth(Number(value))}
+                options={[
+                  { value: "1", label: "1 hop" },
+                  { value: "2", label: "2 hops" },
+                  { value: "3", label: "3 hops" },
+                ]}
+              />
+            )}
 
-            {store.focusId ? (
+            {brainMode ? null : store.focusId ? (
               <Button variant="secondary" size="sm" onClick={() => store.setFocus(undefined)}>
                 Show whole estate
               </Button>
@@ -161,10 +188,17 @@ export function DigitalMapView() {
               </Button>
             )}
 
-            {(store.focusId || activeFilters > 0 || store.highlightedPathId) && (
+            {(activeFilters > 0 ||
+              store.highlightedPathId ||
+              store.highlightedCategory ||
+              (!brainMode && store.focusId)) && (
               <Button variant="ghost" size="sm" onClick={store.reset}>
                 <X />
-                Clear ({activeFilters + (store.focusId ? 1 : 0)})
+                Clear (
+                {activeFilters +
+                  (store.highlightedCategory ? 1 : 0) +
+                  (!brainMode && store.focusId ? 1 : 0)}
+                )
               </Button>
             )}
           </div>
@@ -268,7 +302,9 @@ export function DigitalMapView() {
                   Capped for legibility — heaviest and least healthy entities kept
                 </Badge>
               )}
-              {store.focusId ? (
+              {brainMode ? (
+                <Badge tone="outline">Whole estate · {categories.length} categories</Badge>
+              ) : store.focusId ? (
                 <Badge tone="accent">
                   Focused on {nodesById.get(store.focusId)?.label ?? store.focusId} · {store.depth}{" "}
                   {store.depth === 1 ? "hop" : "hops"}
@@ -280,7 +316,20 @@ export function DigitalMapView() {
               )}
             </div>
 
-            {store.viewMode === "graph" ? (
+            {store.viewMode === "brain" ? (
+              <BrainDiagram
+                snapshot={snapshot}
+                highlightedPath={highlightedPath}
+                selectedId={store.selectedNodeId}
+                highlightedCategory={store.highlightedCategory}
+                showRelationships={store.showRelationships}
+                onSelectNode={store.selectNode}
+                onSelectCategory={(kind) =>
+                  store.highlightCategory(store.highlightedCategory === kind ? undefined : kind)
+                }
+                height={680}
+              />
+            ) : store.viewMode === "graph" ? (
               <DependencyGraph
                 snapshot={snapshot}
                 highlightedPath={highlightedPath}
@@ -333,13 +382,25 @@ export function DigitalMapView() {
             </Card>
           </div>
 
-          <div className="min-w-0">
+          <div className="min-w-0 space-y-4">
+            {brainMode && (
+              <BrainLegend
+                className="max-h-[30rem]"
+                categories={categories}
+                totals={{ entities: snapshot.nodes.length, relationships: snapshot.edges.length }}
+                highlighted={store.highlightedCategory}
+                onHighlight={store.highlightCategory}
+              />
+            )}
             <GraphInspector
               node={selectedNode}
               edge={selectedEdge}
               edges={snapshot.edges}
               nodesById={nodesById}
-              onFocus={(id) => store.setFocus(id, store.depth)}
+              onFocus={(id) => {
+                store.setViewMode("graph");
+                store.setFocus(id, store.depth);
+              }}
             />
           </div>
         </div>
