@@ -49,7 +49,7 @@ export interface ApiError {
 
 /* ---------------------------------- Home --------------------------------- */
 
-export interface DigitalBusinessHealth {
+export interface AppHealth {
   state: HealthState;
   score: number;
   scoreTrend: Trend;
@@ -62,7 +62,7 @@ export interface DigitalBusinessHealth {
 }
 
 export interface CommandCenterPayload {
-  health: DigitalBusinessHealth;
+  health: AppHealth;
   impact: ImpactSummary;
   breakingJourneys: BusinessJourney[];
   journeysHealthy: number;

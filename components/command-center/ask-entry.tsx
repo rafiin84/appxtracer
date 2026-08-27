@@ -32,7 +32,7 @@ export function AskEntry({ className }: { className?: string }) {
             <Sparkle className="size-4" weight="fill" aria-hidden />
           </span>
           <h2 className="text-[15px] font-semibold tracking-[-0.01em] text-ink">
-            Ask anything about your digital business
+            Ask anything about your app
           </h2>
         </div>
         <p className="mt-1.5 text-[13px] text-ink-secondary text-pretty">

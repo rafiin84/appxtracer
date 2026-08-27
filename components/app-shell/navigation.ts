@@ -35,7 +35,7 @@ export const PRIMARY_NAV: NavItem[] = [
   {
     href: "/command-center",
     label: "Command Center",
-    question: "How is my digital business performing?",
+    question: "How is my app performing?",
     icon: SquaresFour,
     primaryMobile: true,
   },
@@ -92,7 +92,7 @@ export const PRIMARY_NAV: NavItem[] = [
   {
     href: "/ask",
     label: "Ask APPX",
-    question: "Ask anything about my digital business.",
+    question: "Ask anything about my app.",
     icon: ChatCircleDots,
     primaryMobile: true,
   },

@@ -46,7 +46,7 @@ export function CioHealthHero({ payload }: { payload: CommandCenterPayload }) {
       <div className="grid gap-6 p-5 sm:p-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-10">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
-            <HealthBadge health={health.state} size="md" label="Digital business" />
+            <HealthBadge health={health.state} size="md" label="App health" />
             {health.since && (
               <span className="inline-flex items-center gap-1.5 text-[12px] text-ink-muted">
                 <Clock className="size-3.5" aria-hidden />

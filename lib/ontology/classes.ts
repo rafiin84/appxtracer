@@ -22,7 +22,7 @@ export interface OntologyClass {
 
 export const ONTOLOGY_CLASSES: OntologyClass[] = [
   // Business layer
-  { curie: "appx:Customer", kind: "customer", label: "Customer", plural: "Customers", layer: "business", subClassOf: "appx:BusinessEntity", definition: "A person or organisation whose experience of the digital business is measured." },
+  { curie: "appx:Customer", kind: "customer", label: "Customer", plural: "Customers", layer: "business", subClassOf: "appx:BusinessEntity", definition: "A person or organisation whose experience of the app is measured." },
   { curie: "appx:Segment", kind: "segment", label: "Segment", plural: "Segments", layer: "business", subClassOf: "appx:BusinessEntity", definition: "A named cohort of customers sharing a region, tier, device or app version." },
   { curie: "appx:BusinessJourney", kind: "journey", label: "Journey", plural: "Journeys", layer: "business", subClassOf: "appx:BusinessEntity", definition: "An end-to-end outcome a customer is trying to achieve, such as completing a purchase." },
   { curie: "appx:JourneyStep", kind: "journey-step", label: "Journey step", plural: "Journey steps", layer: "business", subClassOf: "appx:BusinessJourney", definition: "One stage of a journey, with its own success rate and drop-off." },

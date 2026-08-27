@@ -76,7 +76,7 @@ export function Topbar({ onOpenMobileNav }: { onOpenMobileNav: () => void }) {
         )}
       >
         <MagnifyingGlass className="size-4 shrink-0" aria-hidden />
-        <span className="min-w-0 truncate">Search or ask about your digital business</span>
+        <span className="min-w-0 truncate">Search or ask about your app</span>
         <kbd className="ml-auto hidden shrink-0 rounded border border-line px-1.5 py-0.5 font-sans text-[10.5px] font-medium text-ink-muted sm:block">
           ⌘K
         </kbd>

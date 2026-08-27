@@ -18,8 +18,8 @@ import { TenantTile } from "./tenant-logo";
 /**
  * Who am I looking at, and in which environment?
  *
- * APPX Tracer is the product; NovaCart is the tenant whose digital business it
- * is reporting on. Naming the tenant in the chrome removes any ambiguity about
+ * APPX Tracer is the product; NovaCart is the tenant whose app it is
+ * reporting on. Naming the tenant in the chrome removes any ambiguity about
  * whose customers, journeys and revenue the numbers on screen describe.
  */
 export function EnvironmentSwitcher({ className }: { className?: string }) {

@@ -57,7 +57,7 @@ export function CommandCenterView() {
   return (
     <PageShell width="wide" className="space-y-8">
       <PageHeader
-        question="How is my digital business performing?"
+        question="How is my app performing?"
         title={
           <span className="flex flex-wrap items-center gap-x-3 gap-y-2">
             <span>Command Center</span>
@@ -76,13 +76,13 @@ export function CommandCenterView() {
         }
         meta={
           <>
-            {data.meta.sources.slice(0, 5).map((source) => (
+            {data.meta.sources.slice(0, 6).map((source) => (
               <Badge key={source} tone="outline">
                 {source}
               </Badge>
             ))}
-            {data.meta.sources.length > 5 && (
-              <Badge tone="outline">+{data.meta.sources.length - 5} more sources</Badge>
+            {data.meta.sources.length > 6 && (
+              <Badge tone="outline">+{data.meta.sources.length - 6} more sources</Badge>
             )}
           </>
         }

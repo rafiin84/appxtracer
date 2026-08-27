@@ -103,7 +103,16 @@ export async function getCommandCenter(
     },
     {
       availability: WINDOW_AVAILABILITY,
-      sources: ["Datadog", "Dynatrace", "OpenTelemetry", "NovaCart Order Service", "NovaCart Revenue Ledger", "APPX Graph"],
+      sources: [
+        "ManageEngine OpManager",
+        "ManageEngine AppManager",
+        "Datadog",
+        "Dynatrace",
+        "OpenTelemetry",
+        "NovaCart Order Service",
+        "NovaCart Revenue Ledger",
+        "APPX Graph",
+      ],
     },
   );
 }

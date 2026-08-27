@@ -26,6 +26,7 @@ export type SourceSystem =
   | "Azure Monitor"
   | "Google Cloud Operations"
   | "ManageEngine OpManager"
+  | "ManageEngine AppManager"
   | "ThousandEyes"
   | "Palo Alto Panorama"
   | "GitHub Actions"

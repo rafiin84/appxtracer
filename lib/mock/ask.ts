@@ -863,7 +863,7 @@ function fallbackAnswer(question: string): AskAnswer {
   return {
     ...answer,
     executiveSummary:
-      "I could not resolve that question to a specific entity or journey, so here is the state of the digital business right now. 24,780 customers are affected across three open incidents, with $6.24M of transaction value modelled as at risk. The dominant issue is a Sev 1 on Complete Checkout caused by a Payment Service deployment.",
+      "I could not resolve that question to a specific entity or journey, so here is the state of the app right now. 24,780 customers are affected across three open incidents, with $6.24M of transaction value modelled as at risk. The dominant issue is a Sev 1 on Complete Checkout caused by a Payment Service deployment.",
     limitations: [
       "This is a general answer: the question did not resolve to a specific journey, application, customer or entity.",
       "Try naming a journey (Checkout), an application (Payments Platform), a region (Europe), or paste a customer email or trace id.",

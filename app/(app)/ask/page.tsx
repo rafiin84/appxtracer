@@ -6,7 +6,7 @@ import { LoadingCard } from "@/components/shared/states";
 
 export const metadata: Metadata = {
   title: "Ask APPX",
-  description: "Ask anything about your digital business and get an evidence-backed answer.",
+  description: "Ask anything about your app and get an evidence-backed answer.",
 };
 
 export default function AskPage() {

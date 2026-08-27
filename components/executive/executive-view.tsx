@@ -72,7 +72,7 @@ export function ExecutiveInsightsView() {
       <PageHeader
         question="Is digital experience getting better or worse?"
         title="Executive Insights"
-        description={`${payload.period}. Trends, recurrence and structural risk across the digital business — the view a board conversation is built from.`}
+        description={`${payload.period}. Trends, recurrence and structural risk across the app — the view a board conversation is built from.`}
       />
 
       <PartialDataNote availability={payload.availability} />

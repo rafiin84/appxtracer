@@ -61,7 +61,7 @@ export function AskView() {
   return (
     <PageShell className="space-y-6">
       <PageHeader
-        question="Ask anything about your digital business"
+        question="Ask anything about your app"
         title="Ask APPX"
         description="Ask in plain language. Every answer comes back with business impact, a causal chain, a visible path through your estate, and the evidence behind each claim."
         actions={
