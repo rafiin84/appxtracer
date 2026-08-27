@@ -1,17 +1,27 @@
 "use client";
 
-import { CaretUpDown, Check, Buildings } from "@phosphor-icons/react/dist/ssr";
-import { ENVIRONMENTS } from "@/lib/mock/company";
+import { CaretUpDown, Check } from "@phosphor-icons/react/dist/ssr";
+import { COMPANY, ENVIRONMENTS } from "@/lib/mock/company";
 import { useAppStore } from "@/stores/app-store";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { formatCompactNumber } from "@/lib/formatters";
 import { cn } from "@/lib/utils/cn";
+import { TenantTile } from "./tenant-logo";
 
+/**
+ * Who am I looking at, and in which environment?
+ *
+ * APPX Tracer is the product; NovaCart is the tenant whose digital business it
+ * is reporting on. Naming the tenant in the chrome removes any ambiguity about
+ * whose customers, journeys and revenue the numbers on screen describe.
+ */
 export function EnvironmentSwitcher({ className }: { className?: string }) {
   const environmentId = useAppStore((s) => s.environmentId);
   const setEnvironment = useAppStore((s) => s.setEnvironment);
@@ -21,15 +31,37 @@ export function EnvironmentSwitcher({ className }: { className?: string }) {
     <DropdownMenu>
       <DropdownMenuTrigger
         className={cn(
-          "flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-[13px] font-medium text-ink transition-colors hover:bg-surface-sunken",
+          "flex items-center gap-2.5 rounded-lg px-2 py-1.5 text-left transition-colors hover:bg-surface-sunken",
           className,
         )}
       >
-        <Buildings className="size-4 shrink-0 text-ink-muted" aria-hidden />
-        <span className="min-w-0 truncate">{current.name}</span>
+        <TenantTile />
+        <span className="min-w-0">
+          <span className="block truncate text-[13px] font-semibold leading-tight text-ink">
+            {COMPANY.name}
+          </span>
+          <span className="block truncate text-[11px] leading-tight text-ink-muted">
+            {current.name}
+          </span>
+        </span>
         <CaretUpDown className="size-3.5 shrink-0 text-ink-muted" aria-hidden />
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-64">
+
+      <DropdownMenuContent align="start" className="w-72">
+        <div className="flex items-start gap-2.5 px-2.5 py-2">
+          <TenantTile className="size-8" />
+          <span className="min-w-0">
+            <span className="block truncate text-[13.5px] font-semibold text-ink">
+              {COMPANY.name}
+            </span>
+            <span className="block text-[11.5px] leading-snug text-ink-muted">
+              {COMPANY.tagline} · {formatCompactNumber(COMPANY.monthlyActiveCustomers)} monthly
+              active customers
+            </span>
+          </span>
+        </div>
+
+        <DropdownMenuSeparator />
         <DropdownMenuLabel>Environment &amp; tenant</DropdownMenuLabel>
         {ENVIRONMENTS.map((env) => (
           <DropdownMenuItem key={env.id} onSelect={() => setEnvironment(env.id)}>

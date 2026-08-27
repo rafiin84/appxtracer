@@ -18,7 +18,9 @@ import { ChangeCorrelationCard } from "@/components/changes/change-correlation";
 import { RiskCard } from "@/components/impact/risk-card";
 import { ErrorState, LoadingCard, LoadingGrid, PartialDataNote } from "@/components/shared/states";
 import { Skeleton } from "@/components/ui/skeleton";
-import { formatDateTime } from "@/lib/formatters";
+import { formatCompactNumber, formatDateTime } from "@/lib/formatters";
+import { COMPANY } from "@/lib/mock/company";
+import { TenantChip } from "@/components/app-shell/tenant-logo";
 import { Badge } from "@/components/ui/badge";
 
 export function CommandCenterView() {
@@ -56,8 +58,22 @@ export function CommandCenterView() {
     <PageShell width="wide" className="space-y-8">
       <PageHeader
         question="How is my digital business performing?"
-        title="Command Center"
-        description={`${data.meta.environment.name} · ${data.meta.range.label} · generated ${formatDateTime(data.meta.generatedAt)}`}
+        title={
+          <span className="flex flex-wrap items-center gap-x-3 gap-y-2">
+            <span>Command Center</span>
+            <TenantChip name={COMPANY.name} />
+          </span>
+        }
+        description={
+          <>
+            {COMPANY.tagline}, {formatCompactNumber(COMPANY.monthlyActiveCustomers)} monthly
+            active customers across {payload.geography.length} regions.
+            <span className="mt-1 block text-[13px] text-ink-muted">
+              {data.meta.environment.name} · {data.meta.range.label} · generated{" "}
+              {formatDateTime(data.meta.generatedAt)}
+            </span>
+          </>
+        }
         meta={
           <>
             {data.meta.sources.slice(0, 5).map((source) => (

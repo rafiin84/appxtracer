@@ -52,6 +52,10 @@
   --serious-ink:      #9c4520;
   --critical-ink:     #a02020;
 
+  /* Tenant brand — the customer being monitored, never a product colour */
+  --tenant:           #4a3aa7;
+  --tenant-soft:      #eeecfa;
+
   /* Provenance */
   --observed:         #1baf7a;
   --derived:          #4a3aa7;
@@ -88,6 +92,9 @@
   --accent-soft:      rgba(57, 135, 229, 0.14);
   --accent-ink:       #9ec5f4;
   --on-accent:        #08131f;
+
+  --tenant:           #9085e9;
+  --tenant-soft:      rgba(144, 133, 233, 0.16);
 
   --good-soft:        rgba(12, 163, 12, 0.15);
   --warning-soft:     rgba(250, 178, 25, 0.15);
@@ -143,6 +150,9 @@
   --color-warning-ink:     var(--warning-ink);
   --color-serious-ink:     var(--serious-ink);
   --color-critical-ink:    var(--critical-ink);
+
+  --color-tenant:          var(--tenant);
+  --color-tenant-soft:     var(--tenant-soft);
 
   --color-observed:        var(--observed);
   --color-derived:         var(--derived);

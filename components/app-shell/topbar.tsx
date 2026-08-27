@@ -59,10 +59,12 @@ export function Topbar({ onOpenMobileNav }: { onOpenMobileNav: () => void }) {
         <Wordmark compact />
       </Link>
 
-      <div className="hidden items-center gap-1 lg:flex">
-        <EnvironmentSwitcher />
-        <span className="h-4 w-px bg-line" aria-hidden />
-        <TimeRangePicker />
+      <div className="flex min-w-0 items-center gap-1">
+        <EnvironmentSwitcher className="min-w-0" />
+        <span className="hidden h-4 w-px bg-line lg:block" aria-hidden />
+        <span className="hidden lg:block">
+          <TimeRangePicker />
+        </span>
       </div>
 
       <button
