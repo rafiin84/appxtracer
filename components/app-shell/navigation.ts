@@ -24,6 +24,8 @@ export interface NavItem {
   icon: Icon;
   /** Shown in the mobile bottom bar. */
   primaryMobile?: boolean;
+  /** Shorter label for the bottom bar, where five tabs share the width. */
+  mobileLabel?: string;
 }
 
 /**
@@ -38,6 +40,7 @@ export const PRIMARY_NAV: NavItem[] = [
     question: "How is my app performing?",
     icon: SquaresFour,
     primaryMobile: true,
+    mobileLabel: "Home",
   },
   {
     href: "/experience",
@@ -95,6 +98,7 @@ export const PRIMARY_NAV: NavItem[] = [
     question: "Ask anything about my app.",
     icon: ChatCircleDots,
     primaryMobile: true,
+    mobileLabel: "Ask",
   },
 ];
 

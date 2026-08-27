@@ -143,6 +143,13 @@ interleaved around the wheel rather than ranked, or every large cluster would pa
 one arc. *List* is the same data as text. All three are deterministic: the same snapshot
 always draws the same picture, so the shape becomes something a user can remember.
 
+**One navigation affordance per viewport.** On a phone the bottom bar owns navigation
+entirely — four destinations plus More, which opens everything else in a bottom sheet. There
+is no hamburger: two menus, one of them in the corner furthest from the user's thumb, is
+worse than one in the reachable half of the screen. On desktop the sidebar starts collapsed
+to icons and expands on demand, so the first thing a viewer sees is their own data rather
+than the product's own navigation.
+
 **Motion carries meaning.** Page transitions, causal-path reveals, number counting and
 graph pulses all communicate causality or state. Everything is skipped under
 `prefers-reduced-motion`.

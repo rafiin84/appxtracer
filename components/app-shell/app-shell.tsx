@@ -11,7 +11,7 @@ import { EvidenceDrawer } from "@/components/evidence/evidence-drawer";
 import { usePrefersReducedMotion } from "@/hooks/use-media-query";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
-  const [navOpen, setNavOpen] = React.useState(false);
+  const [moreOpen, setMoreOpen] = React.useState(false);
   const pathname = usePathname();
   const reduced = usePrefersReducedMotion();
 
@@ -19,7 +19,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     <div className="flex min-h-svh w-full">
       <Sidebar />
       <div className="flex min-w-0 flex-1 flex-col">
-        <Topbar onOpenMobileNav={() => setNavOpen(true)} />
+        <Topbar />
         <main id="main" className="min-w-0 flex-1">
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
@@ -35,8 +35,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </main>
       </div>
 
-      <MobileTabBar />
-      <MobileNavSheet open={navOpen} onOpenChange={setNavOpen} />
+      <MobileTabBar moreOpen={moreOpen} onOpenMore={() => setMoreOpen(true)} />
+      <MobileNavSheet open={moreOpen} onOpenChange={setMoreOpen} />
       <CommandPalette />
       <EvidenceDrawer />
     </div>

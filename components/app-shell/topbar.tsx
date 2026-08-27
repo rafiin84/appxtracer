@@ -8,7 +8,6 @@ import {
   Sun,
   Desktop,
   UserCircle,
-  List,
   WarningOctagon,
 } from "@phosphor-icons/react/dist/ssr";
 import { useAppStore, PERSONAS } from "@/stores/app-store";
@@ -30,7 +29,7 @@ import { Wordmark } from "./logo";
 import { cn } from "@/lib/utils/cn";
 import { formatNumber } from "@/lib/formatters";
 
-export function Topbar({ onOpenMobileNav }: { onOpenMobileNav: () => void }) {
+export function Topbar() {
   const setPaletteOpen = useAppStore((s) => s.setCommandPaletteOpen);
   const theme = useAppStore((s) => s.theme);
   const setTheme = useAppStore((s) => s.setTheme);
@@ -46,15 +45,6 @@ export function Topbar({ onOpenMobileNav }: { onOpenMobileNav: () => void }) {
 
   return (
     <header className="sticky top-0 z-30 flex h-14 items-center gap-2 bg-plane/85 px-3 backdrop-blur-md sm:px-4 hairline-b">
-      <button
-        type="button"
-        onClick={onOpenMobileNav}
-        className="grid size-9 shrink-0 place-items-center rounded-lg text-ink-secondary transition-colors hover:bg-surface-sunken lg:hidden"
-        aria-label="Open navigation"
-      >
-        <List className="size-5" />
-      </button>
-
       <Link href="/command-center" className="shrink-0 rounded-lg lg:hidden">
         <Wordmark compact />
       </Link>
@@ -70,13 +60,15 @@ export function Topbar({ onOpenMobileNav }: { onOpenMobileNav: () => void }) {
       <button
         type="button"
         onClick={() => setPaletteOpen(true)}
+        aria-label="Search or ask about your app"
         className={cn(
-          "ml-auto flex h-9 min-w-0 flex-1 items-center gap-2 rounded-lg bg-surface px-3 text-[13px] text-ink-muted ring-hairline transition-shadow",
-          "hover:shadow-sm sm:max-w-sm lg:ml-4 lg:mr-auto",
+          "ml-auto flex h-9 shrink-0 items-center justify-center gap-2 rounded-lg bg-surface text-[13px] text-ink-muted ring-hairline transition-shadow hover:shadow-sm",
+          "w-9 px-0",
+          "sm:w-auto sm:min-w-0 sm:flex-1 sm:justify-start sm:px-3 sm:max-w-sm lg:ml-4 lg:mr-auto",
         )}
       >
         <MagnifyingGlass className="size-4 shrink-0" aria-hidden />
-        <span className="min-w-0 truncate">Search or ask about your app</span>
+        <span className="hidden min-w-0 truncate sm:inline">Search or ask about your app</span>
         <kbd className="ml-auto hidden shrink-0 rounded border border-line px-1.5 py-0.5 font-sans text-[10.5px] font-medium text-ink-muted sm:block">
           ⌘K
         </kbd>

@@ -33,6 +33,25 @@ export const PERSONAS: Array<{ id: Persona; label: string; description: string }
   { id: "service-owner", label: "Service Owner", description: "Journey health and business outcomes." },
 ];
 
+/** The slice written to localStorage. Kept explicit so migrations can type it. */
+interface PersistedState {
+  theme: ThemePreference;
+  environmentId: string;
+  rangeKey: TimeRangeKey;
+  persona: Persona;
+  sidebarCollapsed: boolean;
+  scopes: string[];
+}
+
+const PERSISTED_DEFAULTS: PersistedState = {
+  theme: "system",
+  environmentId: DEFAULT_ENVIRONMENT_ID,
+  rangeKey: DEFAULT_RANGE_KEY,
+  persona: "cio",
+  sidebarCollapsed: true,
+  scopes: [SCOPES.revenue],
+};
+
 interface AppState {
   theme: ThemePreference;
   environmentId: string;
@@ -56,12 +75,9 @@ interface AppState {
 export const useAppStore = create<AppState>()(
   persist(
     (set) => ({
-      theme: "system",
-      environmentId: DEFAULT_ENVIRONMENT_ID,
-      rangeKey: DEFAULT_RANGE_KEY,
-      persona: "cio",
-      sidebarCollapsed: false,
-      scopes: [SCOPES.revenue],
+      // The sidebar starts collapsed: icons only, so the first thing a CIO sees
+      // is their own data rather than the product's own navigation.
+      ...PERSISTED_DEFAULTS,
       commandPaletteOpen: false,
 
       setTheme: (theme) => set({ theme }),
@@ -80,6 +96,15 @@ export const useAppStore = create<AppState>()(
     }),
     {
       name: "appx-tracer:app",
+      // Bumped when a persisted default changes, so a returning viewer gets the
+      // new behaviour instead of their stored copy of the old one.
+      version: 2,
+      migrate: (persisted, version) => {
+        const stored = (persisted ?? {}) as Partial<PersistedState>;
+        const state = { ...PERSISTED_DEFAULTS, ...stored };
+        // v2 collapsed the sidebar by default; discard the stored expansion.
+        return version < 2 ? { ...state, sidebarCollapsed: true } : state;
+      },
       partialize: (s) => ({
         theme: s.theme,
         environmentId: s.environmentId,

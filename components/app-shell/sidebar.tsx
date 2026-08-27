@@ -67,6 +67,40 @@ function NavLink({
   );
 }
 
+function CollapseToggle({
+  collapsed,
+  onToggle,
+}: {
+  collapsed: boolean;
+  onToggle: () => void;
+}) {
+  const button = (
+    <button
+      type="button"
+      onClick={onToggle}
+      aria-expanded={!collapsed}
+      className={cn(
+        "flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-[12.5px] font-medium text-ink-muted transition-colors hover:bg-surface-sunken hover:text-ink",
+        collapsed && "justify-center px-0",
+      )}
+      aria-label={collapsed ? "Expand navigation" : "Collapse navigation"}
+    >
+      <CaretLineLeft
+        className={cn("size-4 transition-transform duration-300", collapsed && "rotate-180")}
+        aria-hidden
+      />
+      {!collapsed && "Collapse"}
+    </button>
+  );
+
+  if (!collapsed) return button;
+  return (
+    <Hint side="right" label="Expand navigation">
+      {button}
+    </Hint>
+  );
+}
+
 export function Sidebar() {
   const pathname = usePathname();
   const collapsed = useAppStore((s) => s.sidebarCollapsed);
@@ -120,21 +154,7 @@ export function Sidebar() {
       </nav>
 
       <div className="p-2.5">
-        <button
-          type="button"
-          onClick={toggle}
-          className={cn(
-            "flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-[12.5px] font-medium text-ink-muted transition-colors hover:bg-surface-sunken hover:text-ink",
-            collapsed && "justify-center px-0",
-          )}
-          aria-label={collapsed ? "Expand navigation" : "Collapse navigation"}
-        >
-          <CaretLineLeft
-            className={cn("size-4 transition-transform duration-300", collapsed && "rotate-180")}
-            aria-hidden
-          />
-          {!collapsed && "Collapse"}
-        </button>
+        <CollapseToggle collapsed={collapsed} onToggle={toggle} />
       </div>
     </aside>
   );
