@@ -1,0 +1,245 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   APPX Tracer — design tokens
+   Chart colors come from a validated categorical palette (see lib/viz/palette.ts).
+   Both modes are *selected*, not derived: the dark column is the same eight hues
+   re-stepped for the dark surface and validated against it.
+   ========================================================================== */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+
+  /* Planes & surfaces */
+  --plane:            #f6f6f4;
+  --surface:          #ffffff;
+  --surface-raised:   #ffffff;
+  --surface-sunken:   #f1f1ee;
+  --surface-inverse:  #101014;
+
+  /* Ink */
+  --ink:              #0d0d10;
+  --ink-secondary:    #52514e;
+  --ink-muted:        #8a8983;
+  --ink-inverse:      #ffffff;
+
+  /* Lines */
+  --line:             rgba(11, 11, 11, 0.09);
+  --line-strong:      rgba(11, 11, 11, 0.16);
+  --grid:             #e6e5e0;
+  --axis:             #c9c8c1;
+
+  /* Accent */
+  --accent:           #2a78d6;
+  --accent-hover:     #256abf;
+  --accent-soft:      #eaf2fd;
+  --accent-ink:       #184f95;
+  --on-accent:        #ffffff;
+
+  /* Status (fixed palette — never themed) */
+  --good:             #0ca30c;
+  --warning:          #fab219;
+  --serious:          #ec835a;
+  --critical:         #d03b3b;
+  --good-soft:        #e7f6e7;
+  --warning-soft:     #fdf3dd;
+  --serious-soft:     #fdeee7;
+  --critical-soft:    #fbeaea;
+  --good-ink:         #006300;
+  --warning-ink:      #7a5300;
+  --serious-ink:      #9c4520;
+  --critical-ink:     #a02020;
+
+  /* Provenance */
+  --observed:         #1baf7a;
+  --derived:          #4a3aa7;
+  --interpreted:      #e87ba4;
+
+  /* Elevation */
+  --shadow-xs: 0 1px 2px rgba(13, 13, 16, 0.04);
+  --shadow-sm: 0 1px 3px rgba(13, 13, 16, 0.06), 0 1px 2px rgba(13, 13, 16, 0.04);
+  --shadow-md: 0 4px 16px rgba(13, 13, 16, 0.07), 0 1px 3px rgba(13, 13, 16, 0.04);
+  --shadow-lg: 0 16px 48px rgba(13, 13, 16, 0.12), 0 2px 8px rgba(13, 13, 16, 0.05);
+}
+
+.dark {
+  color-scheme: dark;
+
+  --plane:            #0a0a0c;
+  --surface:          #121215;
+  --surface-raised:   #17171b;
+  --surface-sunken:   #0e0e11;
+  --surface-inverse:  #f5f5f4;
+
+  --ink:              #f4f4f2;
+  --ink-secondary:    #a9a8a2;
+  --ink-muted:        #77766f;
+  --ink-inverse:      #0d0d10;
+
+  --line:             rgba(255, 255, 255, 0.09);
+  --line-strong:      rgba(255, 255, 255, 0.16);
+  --grid:             #232327;
+  --axis:             #34343a;
+
+  --accent:           #3987e5;
+  --accent-hover:     #5598e7;
+  --accent-soft:      rgba(57, 135, 229, 0.14);
+  --accent-ink:       #9ec5f4;
+  --on-accent:        #08131f;
+
+  --good-soft:        rgba(12, 163, 12, 0.15);
+  --warning-soft:     rgba(250, 178, 25, 0.15);
+  --serious-soft:     rgba(236, 131, 90, 0.16);
+  --critical-soft:    rgba(208, 59, 59, 0.18);
+  --good-ink:         #4ec44e;
+  --warning-ink:      #fac94f;
+  --serious-ink:      #f0a385;
+  --critical-ink:     #ea7373;
+
+  --observed:         #199e70;
+  --derived:          #9085e9;
+  --interpreted:      #d55181;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.55), 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.65), 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+
+@theme inline {
+  --color-plane:           var(--plane);
+  --color-surface:         var(--surface);
+  --color-surface-raised:  var(--surface-raised);
+  --color-surface-sunken:  var(--surface-sunken);
+  --color-surface-inverse: var(--surface-inverse);
+
+  --color-ink:             var(--ink);
+  --color-ink-secondary:   var(--ink-secondary);
+  --color-ink-muted:       var(--ink-muted);
+  --color-ink-inverse:     var(--ink-inverse);
+
+  --color-line:            var(--line);
+  --color-line-strong:     var(--line-strong);
+  --color-grid:            var(--grid);
+  --color-axis:            var(--axis);
+
+  --color-accent:          var(--accent);
+  --color-accent-hover:    var(--accent-hover);
+  --color-accent-soft:     var(--accent-soft);
+  --color-accent-ink:      var(--accent-ink);
+  --color-on-accent:       var(--on-accent);
+
+  --color-good:            var(--good);
+  --color-warning:         var(--warning);
+  --color-serious:         var(--serious);
+  --color-critical:        var(--critical);
+  --color-good-soft:       var(--good-soft);
+  --color-warning-soft:    var(--warning-soft);
+  --color-serious-soft:    var(--serious-soft);
+  --color-critical-soft:   var(--critical-soft);
+  --color-good-ink:        var(--good-ink);
+  --color-warning-ink:     var(--warning-ink);
+  --color-serious-ink:     var(--serious-ink);
+  --color-critical-ink:    var(--critical-ink);
+
+  --color-observed:        var(--observed);
+  --color-derived:         var(--derived);
+  --color-interpreted:     var(--interpreted);
+
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-mono-stack), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --radius-card: 14px;
+  --radius-panel: 18px;
+
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    background: var(--plane);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  ::selection {
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  /* Numeric columns align; standalone figures keep proportional figures. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  [data-slot="scroll-thin"] {
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-strong) transparent;
+  }
+}
+
+@layer utilities {
+  .hairline-b { box-shadow: inset 0 -1px 0 var(--line); }
+  .hairline-t { box-shadow: inset 0 1px 0 var(--line); }
+  .hairline-r { box-shadow: inset -1px 0 0 var(--line); }
+  .hairline-l { box-shadow: inset 1px 0 0 var(--line); }
+  .ring-hairline { box-shadow: 0 0 0 1px var(--line); }
+
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  .grain {
+    background-image: radial-gradient(circle at 1px 1px, var(--line) 1px, transparent 0);
+    background-size: 22px 22px;
+  }
+}
+
+/* Respect the reader's motion preference everywhere, including Framer Motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes appx-shimmer {
+  100% { transform: translateX(100%); }
+}
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface-sunken);
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, var(--line), transparent);
+  animation: appx-shimmer 1.6s infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton::after { animation: none; }
+}

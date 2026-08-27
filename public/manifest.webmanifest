@@ -1,0 +1,11 @@
+{
+  "name": "APPX Tracer — Application Experience Intelligence",
+  "short_name": "APPX Tracer",
+  "description": "Trace the Experience. Connect the Impact.",
+  "start_url": "/command-center",
+  "display": "standalone",
+  "background_color": "#0a0a0c",
+  "theme_color": "#0a0a0c",
+  "orientation": "any",
+  "categories": ["business", "productivity"]
+}
