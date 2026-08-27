@@ -70,33 +70,31 @@ function NavLink({
 function CollapseToggle({
   collapsed,
   onToggle,
+  className,
 }: {
   collapsed: boolean;
   onToggle: () => void;
+  className?: string;
 }) {
-  const button = (
-    <button
-      type="button"
-      onClick={onToggle}
-      aria-expanded={!collapsed}
-      className={cn(
-        "flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-[12.5px] font-medium text-ink-muted transition-colors hover:bg-surface-sunken hover:text-ink",
-        collapsed && "justify-center px-0",
-      )}
-      aria-label={collapsed ? "Expand navigation" : "Collapse navigation"}
-    >
-      <CaretLineLeft
-        className={cn("size-4 transition-transform duration-300", collapsed && "rotate-180")}
-        aria-hidden
-      />
-      {!collapsed && "Collapse"}
-    </button>
-  );
+  const label = collapsed ? "Expand navigation" : "Collapse navigation";
 
-  if (!collapsed) return button;
   return (
-    <Hint side="right" label="Expand navigation">
-      {button}
+    <Hint side="right" label={label}>
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={!collapsed}
+        aria-label={label}
+        className={cn(
+          "grid size-8 shrink-0 place-items-center rounded-lg text-ink-muted transition-colors hover:bg-surface-sunken hover:text-ink",
+          className,
+        )}
+      >
+        <CaretLineLeft
+          className={cn("size-4 transition-transform duration-300", collapsed && "rotate-180")}
+          aria-hidden
+        />
+      </button>
     </Hint>
   );
 }
@@ -114,13 +112,19 @@ export function Sidebar() {
     <aside
       className={cn(
         "hidden shrink-0 flex-col bg-plane transition-[width] duration-300 lg:flex hairline-r",
-        collapsed ? "w-[4.25rem]" : "w-[15rem]",
+        collapsed ? "w-[4.25rem]" : "w-[16.25rem]",
       )}
     >
-      <div className={cn("flex h-14 items-center px-3.5", collapsed && "justify-center px-0")}>
+      <div
+        className={cn(
+          "flex items-center gap-1",
+          collapsed ? "flex-col px-0 pb-1 pt-3" : "h-14 px-3.5",
+        )}
+      >
         <Link href="/command-center" className="min-w-0 rounded-lg">
           <Wordmark compact={collapsed} />
         </Link>
+        <CollapseToggle collapsed={collapsed} onToggle={toggle} className={collapsed ? "" : "ml-auto"} />
       </div>
 
       <nav aria-label="Primary" className="flex-1 overflow-y-auto px-2.5 py-2" data-slot="scroll-thin">
@@ -153,9 +157,6 @@ export function Sidebar() {
         </div>
       </nav>
 
-      <div className="p-2.5">
-        <CollapseToggle collapsed={collapsed} onToggle={toggle} />
-      </div>
     </aside>
   );
 }

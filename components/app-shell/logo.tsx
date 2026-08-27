@@ -38,7 +38,7 @@ export function Wordmark({ className, compact }: { className?: string; compact?:
           <span className="block truncate text-[14px] font-semibold leading-tight tracking-[-0.015em] text-ink">
             APPX Tracer
           </span>
-          <span className="block truncate text-[10.5px] font-medium uppercase tracking-[0.08em] text-ink-muted">
+          <span className="block truncate text-[10px] font-medium uppercase tracking-[0.05em] text-ink-muted">
             Application Experience
           </span>
         </span>
